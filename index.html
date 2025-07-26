@@ -11,7 +11,35 @@
     <h1>📡 Internet Speed Test</h1>
     <button id="startBtn">Start Test</button>
 
+    <div class="results<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Internet Speed Test</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>📡 Internet Speed Test</h1>
+    <input type="button" id="startBtn" value="Start Test" />
+
+    <div id="loading">⏳ Running test...</div>
+
     <div class="results">
+      <p><strong>Download:</strong> <span id="download">--</span> Mbps</p>
+      <p><strong>Upload:</strong> <span id="upload">--</span> Mbps</p>
+      <p><strong>Ping:</strong> <span id="ping">--</span> ms</p>
+    </div>
+
+    <div class="summary" id="summaryText"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/gh/librespeed/speedtest@master/speedtest.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
       <p><strong>Download:</strong> <span id="download">--</span> Mbps</p>
       <p><strong>Upload:</strong> <span id="upload">--</span> Mbps</p>
       <p><strong>Ping:</strong> <span id="ping">--</span> ms</p>
