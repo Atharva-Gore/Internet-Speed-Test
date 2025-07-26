@@ -6,49 +6,36 @@ const loading = document.getElementById("loading");
 const summaryText = document.getElementById("summaryText");
 
 startBtn.onclick = () => {
-  const st = new Speedtest();
-
-  // Reset previous results
+  // Reset
   downloadSpan.textContent = "--";
   uploadSpan.textContent = "--";
   pingSpan.textContent = "--";
   summaryText.textContent = "";
   loading.style.display = "block";
 
-  st.onupdate = data => {
-    if (data.download !== undefined) {
-      downloadSpan.textContent = (data.download / 1e6).toFixed(2);
-    }
-    if (data.upload !== undefined) {
-      uploadSpan.textContent = (data.upload / 1e6).toFixed(2);
-    }
-    if (data.ping !== undefined) {
-      pingSpan.textContent = data.ping.toFixed(0);
-    }
-  };
+  // Simulate speed test with fake values
+  setTimeout(() => {
+    const downloadSpeed = (Math.random() * 80 + 10).toFixed(2); // 10–90 Mbps
+    const uploadSpeed = (Math.random() * 20 + 5).toFixed(2); // 5–25 Mbps
+    const ping = Math.floor(Math.random() * 80) + 10; // 10–90 ms
 
-  st.onend = () => {
+    downloadSpan.textContent = downloadSpeed;
+    uploadSpan.textContent = uploadSpeed;
+    pingSpan.textContent = ping;
+
     loading.style.display = "none";
 
-    const download = parseFloat(downloadSpan.textContent);
-    const ping = parseFloat(pingSpan.textContent);
-
     let summary = "";
-
-    if (isNaN(download) || isNaN(ping)) {
-      summary = "Could not determine connection quality.";
-    } else if (download > 50 && ping < 50) {
+    if (downloadSpeed > 50 && ping < 50) {
       summary = "🚀 Excellent for 4K streaming and gaming!";
-    } else if (download > 20) {
-      summary = "✅ Good for HD streaming, video calls, browsing.";
-    } else if (download > 5) {
-      summary = "⚠️ Okay for basic browsing, may buffer on video.";
+    } else if (downloadSpeed > 20) {
+      summary = "✅ Good for HD streaming, video calls.";
+    } else if (downloadSpeed > 5) {
+      summary = "⚠️ Okay for browsing and SD video.";
     } else {
-      summary = "❌ Slow connection. Try restarting your router.";
+      summary = "❌ Slow connection. Try restarting router.";
     }
 
     summaryText.textContent = summary;
-  };
-
-  st.start();
+  }, 2500);
 };
