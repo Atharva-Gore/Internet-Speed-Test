@@ -2,6 +2,7 @@ body {
   font-family: Arial, sans-serif;
   background: #f0f2f5;
   padding: 20px;
+  margin: 0;
 }
 
 .container {
@@ -11,14 +12,14 @@ body {
   padding: 25px;
   border-radius: 10px;
   text-align: center;
-  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
   margin-bottom: 20px;
 }
 
-button {
+input[type="button"] {
   padding: 10px 25px;
   font-size: 16px;
   background-color: #3498db;
@@ -29,8 +30,15 @@ button {
   transition: background 0.3s ease;
 }
 
-button:hover {
+input[type="button"]:hover {
   background-color: #2980b9;
+}
+
+#loading {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #666;
+  display: none;
 }
 
 .results {
@@ -45,4 +53,29 @@ button:hover {
 span {
   font-weight: bold;
   color: #2c3e50;
+}
+
+.summary {
+  margin-top: 25px;
+  font-size: 16px;
+  color: #2c3e50;
+  background: #e3f2fd;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  input[type="button"] {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .results p {
+    font-size: 16px;
+  }
 }
